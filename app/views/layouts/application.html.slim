@@ -1,0 +1,21 @@
+doctype html
+html lang="en"
+  head
+    title Bare Bone
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag    'application', 'data-turbo-track' => 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
+    = javascript_include_tag 'activestorage', 'data-turbolinks-track' => 'reload'
+    /= favicon_link_tag asset_path('favicon.ico')
+    = render 'layouts/google_tag_manager' if ENV['GOOGLE_TAG_ID'].present?
+
+
+  body
+    = render 'layouts/google_tag_manager_noscript' if ENV['GOOGLE_TAG_ID'].present?
+    .wrapper
+      = render 'shared/header'
+      = yield
+      = render 'shared/footer'

@@ -1,0 +1,30 @@
+section.section-login
+  .container
+    .section__inner
+      = render 'shared/flash'
+      .row.gx-3
+        .col-12.col-lg-6
+          .section__form
+            .form
+              = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+                .form__body
+                  h5 Login
+
+                  .form__row
+                    .form__field
+                      = f.input :email,
+                                required: true,
+                                autofocus: true,
+                                input_html: { autocomplete: "email" }
+                  .form__row
+                    .form__field
+                      = f.input :password,
+                                required: true,
+                                input_html: { autocomplete: "current-password" }
+
+                  .form__actions
+                    = f.button :button, "Login", type: :submit, class: 'btn btn-primary btn--block'
+
+
+                  .form__reminder
+                    = render "users/shared/links"

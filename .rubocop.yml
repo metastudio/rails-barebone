@@ -1,0 +1,91 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-capybara
+  - rubocop-factory_bot
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/migrate/**/*'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - 'bin/**/*'
+    - 'app/views/**/*'
+Rails:
+  Enabled: true
+
+
+Rails/OutputSafety:
+  Exclude:
+    - 'app/admin/**/*'
+
+Rails/Delegate:
+  Enabled: false
+
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - test
+    - staging
+    - production
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Layout/HashAlignment:
+  Enabled: false
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+Layout/LineLength:
+  Max: 128
+
+Metrics/AbcSize:
+  Exclude:
+    - 'app/reports/**/*'
+
+Metrics/BlockLength:
+  CountComments: true
+  Max: 30
+  Exclude:
+    - 'app/models/concerns/**/*'
+    - 'app/admin/**/*'
+    - 'app/reports/**/*'
+    - 'config/**/*'
+    - 'spec/**/*'
+    - 'lib/tasks/**/*'
+
+Metrics/MethodLength:
+  Max: 20
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never
+
+RSpec/ExampleLength:
+  Max: 20
+
+RSpec/MultipleExpectations:
+  Max: 10
+
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10

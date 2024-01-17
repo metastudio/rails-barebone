@@ -1,0 +1,62 @@
+section.section-account
+  .container
+    header.section__head
+      h2 My Account
+
+    #flash
+      = render 'shared/flash'
+    .section__body
+      .section__form
+        .form.form--plain
+          = simple_form_for current_user, url: user_profile_path, html: { role: 'form' }, data: { turbo: false } do |f|
+            .form__body
+              h5 Profile Details
+              = f.error_notification
+
+              .form__row
+                .row.gx-2.gy-5.gy-md-0
+                  .col-12.col-md-6
+                    .form__field
+                      = f.input :first_name,
+                                required: true,
+                                input_html: { autocomplete: "given-name" }
+
+                  .col-12.col-md-6
+                    .form__field
+                      = f.input :last_name,
+                                required: true,
+                                input_html: { autocomplete: "family-name" }
+
+                  .col-12.col-md-6
+                    .form__field
+                      = f.input :phone,
+                                required: false,
+                                input_html: { autocomplete: "tel" }
+
+              .form__actions.form__actions--alt
+                = f.button :button, 'Update', type: :submit, class: 'btn btn-primary'
+
+      .section__form
+        .form.form--plain
+          = simple_form_for current_user, url: user_update_email_path, html: { role: 'form' }, data: { turbo: false } do |fe|
+            .form__body
+              h6 Login Credentials
+              = fe.error_notification
+
+              .form__row
+                .row.gx-2.gy-5.gy-md-0
+                  .col-12.col-md-6
+                    .form__field
+                      = fe.input :email
+                  .col-12.col-md-6
+                    .form__field
+                      = fe.input :current_password, required: true, input_html: { autocomplete: "current-password" }
+
+              .form__actions.form__actions--alt
+                .row.gx-2.gy-5.gy-md-0
+                  .col-12.col-sm-6
+                    = fe.button :button, 'Change Email', type: :submit, class: 'btn btn-primary'
+                  .col-12.col-sm-6.text-start.text-sm-end
+                    a href="#" data-bs-toggle="modal" data-bs-target="#modal_reset_password" data-turbo_frame="modal_reset_password" Reset Password
+
+= render 'user/profile/modal_reset_password'

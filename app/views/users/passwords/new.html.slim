@@ -1,0 +1,24 @@
+section.section-login
+  .container
+    .section__inner
+      .row.gx-3
+        .col-12.col-lg-12
+          .section__form
+            .form
+              = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+                .form__body
+                  h5 Forgot Your Password?
+                  = f.error_notification
+
+                  .form__row
+                    .form__field
+                      = f.input :email,
+                                required: true,
+                                autofocus: true,
+                                input_html: { autocomplete: "email" }
+
+                  .form__actions
+                    = f.button :button, "Send Me Reset Password Instructions", type: :submit, class: 'btn btn-primary btn--block'
+
+                  .form__reminder
+                    = render "users/shared/links"

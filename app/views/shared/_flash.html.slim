@@ -1,0 +1,9 @@
+.flash-container.text-center
+  - if alert
+    .alert.alert-danger.alert-dismissible.fade.show role="alert"
+      = sanitize(alert)
+      button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+  - elsif notice
+    .alert.alert-success.alert-dismissible.fade.show role="alert"
+      = sanitize(notice)
+      button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
