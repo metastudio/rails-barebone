@@ -1,24 +1,15 @@
-section.section-login
-  .container
-    .section__inner
-      .row.gx-3
-        .col-12.col-lg-12
-          .section__form
-            .form
-              = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-                .form__body
-                  h5 Forgot Your Password?
-                  = f.error_notification
+= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+  .d-flex.flex-column.justify-content-center.align-items-center
+    h2.page-title Forgot Your Password?
+    = f.error_notification
 
-                  .form__row
-                    .form__field
-                      = f.input :email,
-                                required: true,
-                                autofocus: true,
-                                input_html: { autocomplete: "email" }
+    .form-group.mb-3.w-50
+      = f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" }
 
-                  .form__actions
-                    = f.button :button, "Send Me Reset Password Instructions", type: :submit, class: 'btn btn-primary btn--block'
+    .d-flex.align-items-center.justify-content-center.mb-3
+      = f.button :button, "Send Me Reset Password Instructions", type: :submit, class: 'btn btn-primary btn-lg'
 
-                  .form__reminder
-                    = render "users/shared/links"
+    = render "users/shared/links"

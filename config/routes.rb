@@ -27,5 +27,8 @@ Rails.application.routes.draw do
     patch :update_password, to: 'profile#update_password'
   end
 
+  # public
+  get :logged_out, to: 'home#logged_out'
+
   root "home#index"
 end
